@@ -1,0 +1,42 @@
+{
+  "name": "polymarket-trading-bot",
+  "version": "1.0.0",
+  "description": "Polymarket prediction market trading bot with copy trading and arbitrage capabilities",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "watch": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "polymarket",
+    "trading",
+    "bot",
+    "prediction-markets",
+    "arbitrage",
+    "copytrading"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "ws": "^8.14.2",
+    "big.js": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/ws": "^8.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.2"
+  }
+}
+
