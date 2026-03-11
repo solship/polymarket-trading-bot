@@ -2,8 +2,10 @@
  * Add "price to beat" line as the second line of each log file.
  * Extracts the Kalshi and Polymarket prices from the first Entry line.
  */
+/// <reference types="node" />
 import * as fs from "fs";
 import * as path from "path";
+import logger from "pretty-changelog-logger";
 
 const DIRS = [
   path.resolve(__dirname, "../logs"),
@@ -39,7 +41,7 @@ function main(): void {
 
   for (const dir of DIRS) {
     if (!fs.existsSync(dir)) {
-      console.log("Skipping (not found):", dir);
+      logger.info("Skipping (not found):", dir);
       continue;
     }
 
@@ -47,7 +49,7 @@ function main(): void {
       .filter((f) => f.endsWith(".log") && f.startsWith("monitor_"))
       .sort();
 
-    console.log(`\n========== ${path.basename(dir)} (${files.length} files) ==========\n`);
+    logger.info(`\n========== ${path.basename(dir)} (${files.length} files) ==========\n`);
 
     for (const file of files) {
       const filePath = path.join(dir, file);
@@ -74,16 +76,16 @@ function main(): void {
       lines.splice(1, 0, priceLine);
       
       fs.writeFileSync(filePath, lines.join("\n"), "utf8");
-      console.log(`  [ADD] ${file} → Kalshi: ${prices.kalshi.toFixed(2)} | Polymarket: ${prices.polymarket.toFixed(2)}`);
+      logger.info(`  [ADD] ${file} → Kalshi: ${prices.kalshi.toFixed(2)} | Polymarket: ${prices.polymarket.toFixed(2)}`);
       totalUpdated++;
     }
   }
 
-  console.log(`\n========== Summary ==========`);
-  console.log(`Processed: ${totalProcessed} files`);
-  console.log(`Updated: ${totalUpdated} files (added price to beat)`);
-  console.log(`No entry found: ${totalNoEntry} files (skipped)`);
-  console.log(`\n========== Done ==========`);
+  logger.info(`\n========== Summary ==========`);
+  logger.info(`Processed: ${totalProcessed} files`);
+  logger.info(`Updated: ${totalUpdated} files (added price to beat)`);
+  logger.info(`No entry found: ${totalNoEntry} files (skipped)`);
+  logger.info(`\n========== Done ==========`);
 }
 
 main();

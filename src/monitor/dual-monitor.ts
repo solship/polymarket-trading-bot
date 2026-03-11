@@ -2,7 +2,7 @@
  * Real-time dual price monitor: Kalshi + Polymarket (Bitcoin 15m up/down).
  */
 import { spawn } from "child_process";
-import { Configuration, MarketApi } from "kalshi-typescript";
+import { Configuration, MarketApi } from "kalshi-typescript"
 import { config } from "../core/config";
 import { getBitcoinUpDownMarkets } from "../kalshi/bot";
 import { releaseMonitorLock } from "../core/monitor-lock";
