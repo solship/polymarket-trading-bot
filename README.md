@@ -3,6 +3,15 @@
 High‑accuracy, Kelly‑driven **weather trading bot for Polymarket**.  
 It scans NWS forecasts, finds mispriced temperature markets, and simulates trades into `simulation.json` to help you track performance and refine your strategy.
 
+
+### Prove of Work
+
+
+
+https://github.com/user-attachments/assets/56c9ceb5-4021-4c62-9087-a8ce66c1d05a
+
+
+
 ### Install
 
 ```bash
